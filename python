@@ -1,0 +1,53 @@
+数据类型
+1、整数
+2、浮点数，小数
+3、字符串  '或“括起来的任意文本 ，\转义字符 ,r' '表示’  ’ 内部的字符串不转义，'''   '''  多行内容
+4、布尔值  True False   and   or  not 运算
+5、空值  None  
+6、变量
+7、常量   /除法  //除法求整  %求余
+
+编码
+python3的字符串使用的是Unicode
+ASCII  Unicode  UTF-8（可变长度编码）
+ord（）字符变整数      chr（）整数编码变字符
+在网络上传输或保存到磁盘，需要把str变为以字节为单位的bytes  b前缀 encode（）变为bytes
+从网络或磁盘上读取的字节流为bytes。要变为str，需要decode（）方法。
+	始终使用utf-8编码进行str和bytes转换
+
+格式化
+	用%实现
+	%d  整数			%f  浮点数        %s		字符串			%x		十六进制整数
+	%0nd   加0用0补齐，n为共n位
+	%.2f
+	%%来表示%
+
+使用list和tuple
+
+list  数组
+classmates=['micheal','bob','tracy']
+从0开始
+	追加classmates.append('adam')
+	插入classmates.insert(1,'jack')
+	删除末尾元素classmates.pop()  classmates.pop(i) i为索引位置
+	把某个元素替换，可以直接用赋值的方法。  
+
+	多维数组  s=['python',['java','php']]
+
+
+tuple  元组，一旦初始化就不能修改，没有pop，insert，不能赋值
+	只有一个元素   t=（1,）
+	不变指的是指向不变，但是指向对象本身可能发生变化，包含list元素，list本身可能发生变化。
+
+
+条件判断
+if语句	
+三种语句：if    if else    if elif else
+
+input
+	input（）读取用户输入，返回的数据类型是str，字符串。如果使用输入值进行比较，要先转换成整数型，int（）
+
+
+2015-12-3 
+
+	
