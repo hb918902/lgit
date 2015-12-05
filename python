@@ -114,3 +114,43 @@ set和dict的键值必须是不可变的，不能是变量或者list
 递归函数
 		逻辑简单清晰，过深的调用会导致栈溢出
 
+
+高级特性
+	
+切片 L[0：3] 起始为第0个元素。L [a,b,c] c为步长。
+		数列、元组、字符串
+
+迭代 	for  in   来遍历
+		字典迭代  for k in d   for v in d.values（）  for k，v in d.items()
+
+列表生成器  list(range(1,11)) 
+					[x*x for x in range(1,11)]  加公式
+					[x*x for x in range(1,11)if x%2==0]  加判断语句,用于筛选
+					[m+n for m in 'ABC' for n in 'XYZ']  两层循环
+		isinstance函数判断变量是不是字符串
+		isinstancs(x,str)
+
+生成器
+		一边循环，一边计算 generator 把列表生成器[]改为（）
+		g=(x*x for x in range(10))  可以通过 next（）获得下一个返回值
+		超出时，报错StopIteration
+		一般使用for来迭代调用
+		yield（） 代替print（）
+
+迭代器
+		可直接用于for循环的数据类型。
+		1、集合数据类型，list、tuple、dict、set、str
+		2、generator 
+		可以使用isinstance（）判断对象是否为Iterable（可迭代）	
+		from collections import Iterable isinstance（{}，Iterable）
+
+ 		可以被next（）函数调用并返回下一个值的对象称为迭代器：Iterator
+  		判断	是否是Iterator对象 
+		from collections import Iterable   isinstance（{}，Iterator）		
+		使用iter（）变为Iterator
+
+
+
+
+
+
