@@ -149,6 +149,26 @@ set和dict的键值必须是不可变的，不能是变量或者list
 		from collections import Iterable   isinstance（{}，Iterator）		
 		使用iter（）变为Iterator
 
+函数式编程
+高阶函数
+		变量可以指向函数  f=abs f（）
+		函数名也是变量，所以不能轻易给内置函数名赋值。
+传入函数
+		可以把函数作为参数传给另一个函数。
+map和reduce
+		python内建函数map（）和reduce（）
+		1、map（）接受两个参数，函数（使用函数名）和Iterable，将函数作用于每个可迭代对象上，返回Iterator。惰性序列，需要list显示。
+		2、reduce（）接受函数和序列，然后把函数作用在整个序列上。即序列的所有元素是函数的初始值。返回一个或者一组值。需要 from funtools import reduce
+
+filter  内建函数，用于过滤序列，筛选。惰性序列。需要list显示。返回值True保留。
+sorted  sorted([36, 5, -12, 9, -21])
+				 sorted(['bob', 'about', 'Zoo', 'Credit'])   ASCII码值
+				 sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower, reverse=True)
+
+
+2015-12-6 17:14
+
+
 
 
 
