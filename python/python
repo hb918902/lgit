@@ -169,6 +169,33 @@ sorted  sorted([36, 5, -12, 9, -21])
 2015-12-6 17:14
 
 
+返回函数
+		相关参数和变量都保存在返回函数中，闭包程序结构
+匿名函数
+  lambda x：x*x  
+     只能有一个表达式，返回值就是表达式的结果
+装饰器
+def log(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+
+偏函数
+		当函数的参数个数太多时，可以通过设定默认参数来创建新函数。相当于给参数设定默认值，但也可接受新参数。
+		import functools
+		int2=functools.partial(int,base=2)
+
+模块
+
+2015-12-7 21：52
+
+
+
+
 
 
 
