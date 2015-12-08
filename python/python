@@ -194,9 +194,52 @@ def log(text):
 2015-12-7 21：52
 
 
+模块
 
+#!/usr/bin/env python3
+#-*-coding:utf-8-*-
 
+'a test module'
 
+__author__='Micheal chen'
+
+		标准模板
+
+作用域
+		正常的函数名和变量名是公开的，可被直接引用。比如abc
+		__abc__是特殊变量，可被直接引用，但是有特殊用途。
+		_abc  __abc是非公开的，不应该被直接引用。
+
+类
+class Student(object):
+	"""docstring for Student"""
+	def __init__(self, name,score):
+		self.name=name													#属性，相当于函数的参数
+		self.score=score												#属性
+
+	def print_score(self):
+		print('%s %s' %(self.name,self.score))
+		
+访问限制
+		外部代码可以修改一个实例的属性。
+		为了防止内部属性不被修改，可以在属性前加上__,__name，变成私有变量，然后通过获取函数来访问
+def get_name(self):
+		return self.__name
+修改
+def set_name(self,name):
+		set.__name=name  #可以设定范围，防止无效输入
+
+继承和多态
+		子类会继承父类的属性和函数，当子类和父类函数名相同时，调用子类函数。
+
+获得对象信息
+		使用type（） 函数和基本数据类型
+		使用isinstance（） 判断对象是否是某种类型  isinstance(h, Animal)
+		对象状态getattr()  setattr()  hasattr()
+
+实例属性和类属性
+		实例属性和类属性名称相同时，会优先使用实例属性
+2015-12-8  22：22
 
 
 
