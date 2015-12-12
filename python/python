@@ -250,12 +250,65 @@ def set_name(self,name):
 限定实例的属性
 定义一个特殊的__slots__变量，来限制实例的属性。
 
+#2015-12-12 10:54
+	类的属性
+	1、直接定义 self.name=name  外部代码可以直接访问
+	2、转变为     self.__name  私有变量 ，并在类内部添加访问函数。在访问函数中设置属性限制，参数检查。
+	3、使用@property 方法简化类属性的访问函数代码。
+		@property  以及@property产生的@name（属性名字）.setter
 
 
 
+class Student(object):
 
+    @property               #设置birth属性
+    def birth(self):
+        return self._birth  
 
+    @birth.setter           #设置birth属性可以被设置为其他值
+    def birth(self, value):
+        self._birth = value
 
+    @property               #设置age属性，由于没有setter，只读属性
+    def age(self):
+        return 2015 - self._birth
+
+多重继承
+		class Bat(Mammal, Flyable):
+    pass
+	通过多重继承可以同时获得多个父类的所有功能。
+	MixIn设计模式。
+
+定制类
+	__str__返回字符串
+	__iter__ 用于迭代
+	__getitem__ 可以像list一样照下表取元素。
+	__getattr__ 定义属性
+	__call__ 直接调用实例
+
+使用枚举类
+	定义常量		使用Enum类实现
+
+使用元类
+
+错误、调试和测试
+错误
+	错误处理机制  try...(except...as...)(else..)finally...
+	所有的错误类型都继承自BaseException
+	调用堆栈，定位错误位置和错误原因
+记录错误
+	python内置logging模块  可以捕获错误后继续执行
+抛出错误
+	错误是一个类，捕获一个错误就是捕获到错误类的一个实例。可以自己定义错误
+
+调试
+	断言 assert  asser n!=0,'n is zero'   n!=0应该是True，否则抛出AssertionError   可以启动 -O参数来关闭  python3.4 -O hello.py
+	logging  可以输出文件，指定级别debug，info，warning，error。
+	pdb设置断点    python3.4 -m pdb hello.py
+
+单元测试
+文档测试
+2015-12-12 22：16
 
 
 
