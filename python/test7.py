@@ -101,7 +101,7 @@ foo('0')
 '''
 
 
-
+"""
 def foo(s):
     n = int(s)
     if n==0:
@@ -116,3 +116,9 @@ def bar():
         raise
 
 bar()
+"""
+
+from io import StringIO
+f=StringIO()
+f.write('hello')
+print(f.getvalue())

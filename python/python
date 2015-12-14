@@ -311,9 +311,74 @@ class Student(object):
 2015-12-12 22：16
 
 
+IO编程
+文件读写
+读文件  open（）
+	f = open('/Users/michael/test.txt', 'r')
+	f.read() 用一个str对象表示
+	f.close() 文件使用完毕后必须关闭，文件对象占用系统资源，且同一时间打开的文件数量有限。
+	为了保证是否出错都能正确的关闭文件，使用下列方式
+try:
+	f=open('/path/to/file','r')
+	print(f.read())
+fially:
+	if f:
+		f.close()
+	使用with语句的简化版
+with open('/path/to/file',) as f:
+	print(f.read())
+	读取方法
+		read（） 一次性读取文件全部内容，适合小文件
+		read（size）每次读取size个字节
+		readline（）每次读取一行
+		readlines（）一次读取所有内容并按行返回list
 
+open参数
+	r:读（默认）
+	w：写
+	x：创建新文件打开并写
+	b：二进制模式
+	t：文本模式（默认） 
+	
+二进制文件
+  f = open('/Users/michael/test.jpg', 'rb')
 
+字符编码
+	encoding参数，例如读取GBK编码文件（汉字文件）encoding='gbk',
+	errors参数，errors='ignore'
 
+写文件
+	w 文本文件   wb 二进制文件
+	f.write('txt')
+	f.close()
+必须调用f.close()
+用with操作文件IO 
+
+StringIO和BytesIO
+	StringIO操作在内存中读写str 
+	from io import StringIO    StringIO（’txt‘）  获取值 getvalue（）
+	BytesIO操作在内存中读取bytes
+  from io import BytesIO 
+
+操作文件和目录
+	os模块
+文件和目录
+	操作文件和目录函数一部分放在os模块中，一部分放在os.path模块中。
+	查看当前目录的绝对路径
+	os.path.abspath('.')
+	在某个目录下创建一个新目录
+	os.path.join('/','test')
+	os.mkdir('/test')
+	删掉一个新目录
+	os.rmdir('/test')
+	
+	得到文件拓展名
+	os.path.splitext('/path/to/file.txt')
+	当前目录下的文件重命名
+	os.rename('test.txt', 'test.py')
+	删除文件
+	os.remove('test.py')
+2015-12-14 21：42
 
 
 
