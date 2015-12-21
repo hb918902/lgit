@@ -1,0 +1,123 @@
+2015-12-20 
+mysql
+SQL 结构化查询语言
+
+
+数据库命令
+SELECT VERSION();			查看版本
+SHOW DATABASES;				查看数据库
+CREATE DATABASE linuxcast;			创建数据库
+drop database linuxcast;   			删除数据库
+use linuxcast;					切换数据库
+数据库名称不能直接修改
+
+数据库管理
+创建和删除
+CREATE DATABASE linuxast
+DROP DATABASE linuxcast
+无法直接重命名
+
+每一列是一个属性;每一行是一条记录
+每一列以特定数据类型保持，都必须指定属性，下面为常见数据类型
+（整数、浮点数、固定长度字符串、可变长度字符串、存储日期）
+
+创建表格
+CREATE TABLE 表名称
+（
+列名称1 数据类型，
+列名称2 数据类型，
+列名称3 数据类型
+）
+所有信息加一条id
+查看表格
+SHOW TABLES
+查看表结构
+DESCRIBE（DESC) 表名称
+删除表
+DROP 表名称
+修改表
+重命名
+ALTER TABLE 原名字 RENAME 新名字
+向列表中添加一列
+ALTER TABLE 表名称 ADD 列名 属性
+删除列
+ALTER TABLE 表名称 DROP COLUMN 列名
+修改列的数据类型
+ALTER TABLE 表名称 MODIFY 列名 数据类型
+重命名一个列
+ALTER TABLE 表名称 CHANGE COLUMN 原列名 新名字 数据类型
+
+向表格中插入数据
+向表格中插入一条记录;
+INSERT INTO 表名称 	VALUES（值1,值2...）;字符和字符串用单引号
+或者
+INSERT INTO 表名称（列1,列2） VALUES （值1,值2...);
+查询数据
+SELECT 列名称1,列名称2 ... FROM 表名称;
+或者
+SELECT * FROM 表名称
+按条件查询
+SELECT 列名称 FROM 表名 WHERE 列 运算符 值; 
+运算符 =  <>不等于  >  <  >=  <=   BETWEEN 在某个范围内	 LIKE
+删除一条记录
+DELETE FROM 表名称 WHERE 列 运算符 值;
+或
+DELETE * FROM 表名称;
+更新一条记录
+UPDATE 表名称 SET 列名称=新值 WHERE 列=值 
+返回结果删除重复项
+SELECT DISTINCT 列名称 FROM 表名称;
+WHERE 条件中使用逻辑组合 AND&OR
+SELECT * FROM 表名称 WHERE 条件1 AND 条件2
+SELECT * FROM 表名称 WHERE 条件1 OR 条件2
+对结果进行排序
+SELECT * FROM 表名称 ORDER BY 列名称
+SELECT * FROM 表名称 ORDER BY 列名称 DESC （使用倒序）
+
+用户管理
+默认只有一个root用户
+用户信息默认保存在mysql数据库user表中
+创建新用户
+CREATE USER 用户名 IDENTIFIED BY ‘密码’;新建用户必须设置权限
+删除用户
+DROP USER 用户名;
+重命名用户
+RENAME USER 原用户名 TO 新用户名
+修改当前用户密码
+SET PASSWORD=PASSWORD（‘新密码’）;
+修改指定用户密码
+SET PASSWORD FOR 用户名=PASSWORD（‘新密码’）;
+
+Mysql权限系统
+两个阶段：1 检查用户是否能够连接; 2 检查用户是否具有所执行动作的权限
+层级：全局层级;数据库层级;表层级;列层级;子程序层级
+通过GRANT授予权限;REVOKE撤销权限
+GRANT ALL PRIVILEGES ON *.* to 'yonghuming'@'%' IDENTIFIED BY 'mima'
+% 所有主机
+root默认不能远程登录
+
+数据库简单备份和恢复
+自带备份恢复工具mysqldump
+备份一个指定数据库
+mysqldump -u root -p 数据库名称 >备份文件.sql  (纯文本文件)
+数据库恢复
+mysql -u root -p 数据库名称 < 备份文件.sql
+
+设置数据库编码
+编码影响数据库占用空间;数据库与客户端通信
+默认使用编码latin
+通过下面命令查看Mysql支持的命令
+SHOW CHARACTER SET;
+查看当前mysql使用的编码
+SHOW VARIABLES LIKE ‘character_set%';
+SHOW VARIABLES LIKE ‘collation%';
+指定数据库使用的编码
+创建时指定编码方式
+CREATE DATABASE linuxcast
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf_general_ci;
+修改数据库编码
+ALTER DATABASE linuxcast CHARACTER SET utf8 COLLATE utf_general_ci;
+有数据，可能导致数据不正常显示
+
+2015-12-21 17:59
